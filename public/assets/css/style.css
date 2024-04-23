@@ -1,0 +1,302 @@
+:root{
+    --background-light: #f0f2f4;
+    --background-white: #f6f5ff
+    --text-dark:#0a0040;
+    --color-primary:#6143ff;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    color: var(--text-dark);
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-white);
+    overflow-x: hidden;
+
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.sidebar{
+    width: 100px;
+    background-color: var(--color-primary);
+    height: 1400px;
+}
+
+.sidebar img{
+    max-width: 100%;
+}
+
+nav{
+    height: 100px;
+    background-color: var(--background-light);
+    width: calc(100vw - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+nav_user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px;
+    margin-left: 8px;
+}
+
+a.btn{
+    text-decoration: none;
+}
+
+.btn{
+   padding: 20px 30px;
+   margin-right: 6px;
+   border-radius: 10px;
+   transition: all .3s ease-in-out;
+   border: 0;
+   cursor: pointer;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+}
+
+.btn-primary{
+    background-color: var(--color-primary);
+    color: white;
+}
+
+main{
+    display: flex;
+    height: auto
+}
+
+section.graph{
+    width:33%;
+    height: 100%;
+    padding: 20px 20px 0 20px;
+}
+
+.graph_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.graph_header > h2{
+    flex: 2;
+    display: inline-block;
+}
+
+.graph-header-line{
+    flex: 1;
+    width: 120px;
+    background-color: rgba(0,0,0,.2);
+    height: 2px;
+}
+
+.graph_header-date{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+}
+
+
+.graph_header_subtitle{
+    margin-top: 10px;
+}
+
+.graph-placeholder{
+    width: 300px;
+    height: 300px;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.tasks-left-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.list{
+    padding: 20px 20px 0 20px;
+    flex: 1;
+}
+
+.list-header{
+    display: flex;
+}
+
+.list-header-select{
+    background-color: transparent;
+    border: 0;
+    font-weight: bold;
+
+}
+
+
+.task-list{
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ margin-top: 20px;
+ padding: 20px 20px 0 20px;
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 30px 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--background-light) ;
+    transition: all .3s ease-in-out;
+}
+
+.task:hover{
+    background-color: var(--background-light);
+    transform: scale(1.05);
+    border-radius: 10px;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.priority, .actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+}
+
+.actions{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.actions a {
+    margin-left: 20px;
+    margin-right: 10px;
+    transition: all .3s ease-in-out;;
+}
+
+.actions> a:hover{
+    transform: scale(1.50);
+}
+
+.sphere{
+    width: 22px;
+    height: 22px;
+    border-radius:50% ;
+    margin-right: 10px;
+    background-color: white;
+}
+
+
+.task-title{
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.task_section{
+    margin: auto;
+    padding-top: 20px;
+}
+
+.task_section > h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.inputArea{
+    display: block;
+    margin: 10px 0 20px 0;
+}
+
+.inputArea > label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inputArea > input{
+    height: 40px;
+    width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.inputArea > select{
+    height: 40px;
+    width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 1px  #ccc;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.inputArea > textarea{
+    height: 120px;
+    width: 400px;
+    padding: 5px;
+    resize:none;
+    border-radius: 5px;
+    border: solid 1px  #ccc;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.alert-item {
+    background-color: red;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    color: beige;
+    list-style-type: none
+}
+
+.user-logado{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 400px;
+}
+
+.avatar{
+    width: 300px;
+    height: 22px;
+    display: flex;
+    flex-direction: row;
+    margin-right: 10px;
+}
+
+.avatar img{
+    max-width: 22px;
+    border-radius:50% ;
+}
+
+.name_user{
+    width: 200px;
+    margin-left: 6px;
+}
