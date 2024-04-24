@@ -65,8 +65,8 @@ class TaskEmail extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromPath('D:\B7web\Laravel\tasks\public\assets\images\graph.png')
-            ->as('graph.png'),
+           // Attachment::fromPath('D:\B7web\Laravel\tasks\public\assets\images\graph.png')
+           // ->as('graph.png'),
         ];
     }
 }
