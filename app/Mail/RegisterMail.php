@@ -2,34 +2,26 @@
 
 namespace App\Mail;
 
-use App\Models\Category;
-use App\Models\Task;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Auth;
 
-class TaskEmail extends Mailable
+class RegisterMail extends Mailable
 {
     use Queueable, SerializesModels;
-    private $task;
     private $user;
-
-    private $category;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(Task $task, Authenticatable $user)
+    public function __construct(User $user)
     {
-        $this->task = $task;
         $this->user = $user;
-        $this->category = Category::find($task->category_id);
     }
 
     /**
@@ -38,7 +30,7 @@ class TaskEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Task Criada',
+            subject: 'Registro de Usuário',
         );
     }
 
@@ -48,11 +40,9 @@ class TaskEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'Mail.email',
+            view: 'Mail.register-mail',
             with:[
-                'nome'=> $this->user->name,
-                'title_task' => $this->task['title'],
-                'category_title' => $this->category->title
+                'name'=> $this->user->name,
             ]
         );
     }
@@ -64,9 +54,6 @@ class TaskEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [
-            Attachment::fromPath('D:\B7web\Laravel\tasks\public\assets\images\graph.png')
-            ->as('graph.png'),
-        ];
+        return [];
     }
 }

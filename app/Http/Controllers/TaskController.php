@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\TaskSendEmail;
 use App\Mail\TaskEmail;
 use App\Models\Category;
 use App\Models\Task;
@@ -30,8 +31,8 @@ class TaskController extends Controller
         $task['user_id'] = $user->id;
 
         $task_created =  Task::create($task);
-        $mail = new TaskEmail($task_created, $user);
-        Mail::to('jpvieira271@gmail.com')->send($mail);
+        TaskSendEmail::dispatch($task_created, $user);
+
         return redirect(route('home'));
     }
 

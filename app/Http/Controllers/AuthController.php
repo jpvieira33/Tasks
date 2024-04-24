@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendRegisterMail;
+use App\Mail\RegisterMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -53,7 +56,9 @@ class AuthController extends Controller
 
         $dados = $request->only("name", "email","password");
         $dados['password'] = Hash::make($request->password);
-        User::create($dados);
+        $createdUser = User::create($dados);
+
+        SendRegisterMail::dispatch($createdUser);
         return redirect(route("login"));
     }
 
