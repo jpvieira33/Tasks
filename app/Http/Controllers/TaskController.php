@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TaskEmail;
 use App\Models\Category;
 use App\Models\Task;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TaskController extends Controller
 {
@@ -26,7 +29,9 @@ class TaskController extends Controller
         $user = Auth::user();
         $task['user_id'] = $user->id;
 
-        Task::create($task);
+        $task_created =  Task::create($task);
+        $mail = new TaskEmail($task_created, $user);
+        Mail::to('jpvieira271@gmail.com')->send($mail);
         return redirect(route('home'));
     }
 

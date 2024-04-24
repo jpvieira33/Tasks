@@ -6,6 +6,13 @@
     </x-slot:btn>
    <section class="task_section">
        <h1>Criar Tarefa</h1>
+       @if($errors->any())
+        <ul class="alert alert-error">
+            @foreach ($errors->all() as $error)
+                <li class="alert-item">{{$error}}</li>
+            @endforeach
+        </ul>
+       @endif
        <form action="{{route('task.create_action')}}" method="POST">
           @csrf
           <x-form.text_input name="title"  label="Titulo" id="title" placeholder="Digite o titulo da sua tarefa" required='required' />
